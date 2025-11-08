@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const productRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
+const booksRouter = require('./routes/book');
 
+app.use(express.json());
 
 //Logging middleware
 app.use((req, res, next) => {
@@ -12,6 +14,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRouter);
 app.use('/categories', categoriesRouter);
+app.use('/books', booksRouter);
 
 // ✅ Wildcard Route (handles undefined routes)
 app.use((req, res) => {
